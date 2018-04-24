@@ -1,0 +1,290 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+	font-family: Monoton, Tahoma, sans-serif;
+    font-weight: 500;
+	font-size: 38px;
+	color: #001827;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 3px 20px 0 rgba(46, 61, 73, 0.6);
+	transition: all 0.5s ease;
+	transform-style: preserve-3d;	
+}
+
+.deck .card:hover {
+	opacity: 0.8; 
+}
+
+.deck .card.open {
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #382597;
+    font-size: 38px;
+}
+
+.deck .card.notmatched {
+	cursor: default;
+	background: #990900;
+	font-size: 33px;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+	font-size: 16px;
+	color: #006;
+	font-family: Monoton, Tahoma, sans-serif;
+    text-align: left;
+    width: 380px;
+    margin-bottom: 15px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin-right: 35px;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.fa-star {
+	color: #ff872c;
+	font-size: 20px;
+}
+
+.score-panel .moves {
+	margin-right: 5px;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+	padding: 0px 4px;
+	border-radius: 2px;
+}
+
+.score-panel .restart:hover {
+	background: #cacbbd;
+}
+
+#timer {
+	display: inline-block;
+	margin-left: 35px;
+}
+
+/*
+ * Styles for congratulation popup
+ */
+
+ .popup-container {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+ }
+
+.hidden {
+	visibility: hidden;
+}
+
+.popup {
+	margin: 40px auto;
+	padding: 50px;
+	background: #f2f2f2;
+	border-radius: 10px;
+	font-family: Tahoma, sans-serif;
+	position: relative;
+	color: #242c43;
+}
+
+.popup .close-icon {
+	position: absolute;
+	top: 15px;
+	right: 25px;
+	text-decoration: none;
+	padding: 2px 4px;
+	border-radius: 2px;
+}
+
+.popup .close-icon:hover {
+	background: #cacbbd;
+}
+
+.rating li{
+	display: inline-block;
+	list-style: none;
+}
+
+#replay-button {
+	background-color: #28314b;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+#replay-button:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+/*
+ * Responsive design
+ */
+ 
+ @media screen and (max-width: 430px) {
+	 
+	 .deck {
+		width: 90%;
+		min-height: 420px;
+	 }
+	 
+	 .deck .card {
+		 height: 4rem;
+		 width: 4rem;
+	 }
+	 
+	 .deck .card.show {
+		font-size: 22px;
+	}
+	
+	.deck .card.match {
+		font-size: 26px;
+	}
+	
+ }
+ 
+ @media screen and (max-width: 380px) {
+	 
+	.deck {
+		width: 90%;
+		min-height: 400px;
+	} 
+	
+	.deck .card {
+		height: 3.6rem;
+		width: 3.6rem;
+	}
+	
+	.score-panel {
+		width: 90%;
+		font-size: 14px;
+	}
+	
+ }
+ 
+ @media screen and (max-width: 320px) {
+	 
+	h1 {
+		font-size: 16px;
+	}
+	 
+	.deck {
+		padding: 10px;
+	}
+	 
+	.score-panel {
+		font-size: 14px;
+	}
+	
+	.score-panel .stars {
+		margin: 10px;
+	}
+	 
+	.fa-star {
+		 font-size: 14px;
+	}
+	
+	#timer {
+		margin-left: 10px;
+	}
+	
+ }
+
+ 
+ 
